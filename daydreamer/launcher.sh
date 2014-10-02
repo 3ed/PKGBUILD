@@ -18,4 +18,3 @@ else
   read path < <(dirname -- "$path")
 fi
 
-exec -- java -jar "$path/../lib/daydreamer/DayDreamer7.0.jar" "$@"
