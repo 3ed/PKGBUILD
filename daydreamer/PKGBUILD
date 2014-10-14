@@ -2,14 +2,14 @@
 pkgbase=daydreamer
 pkgname=(daydreamer daydreamer-common daydreamer-editor)
 pkgver=7.0
+pkgrel=4
 _app_player=("0Byn3Yo_yFz45Skx6Vms0M3FBQ0k" "7.0" "DayDreamer7.0.jar")
 _app_editor=("0Byn3Yo_yFz45UFlrUlRyQjF2OEk" "7.0" "DayDreamerEditor7.0.jar")
-pkgrel=3
 pkgdesc="Day Dreamer is interactive fiction player written in java (ddg/ddz format)"
 arch=('any')
 url="https://drive.google.com/folderview?id=0Byn3Yo_yFz45ak11MXl6U05mYVE&usp=sharing"
 license=('CCPL:BY-ND-NC')
-depends=('java-common')
+depends=('java-runtime-common')
 makedepends=('imagemagick')
 install=daydreamer.install
 
@@ -34,7 +34,7 @@ prepare() {
   msg2 "Creating icons..."
   install -dm755 "$srcdir"/hicolor/256x256/apps/
 
-  # Picture under CC, share and modification allowed, user/author: m-erencelik
+  # Picture under CC, share and modification allowed, user/author: m-erencelik @deviantart
   install -m644 "$srcdir/daydreamer.png" "$srcdir/hicolor/256x256/apps/daydreamer.png"
 
   for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128; do
