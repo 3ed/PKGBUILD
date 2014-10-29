@@ -58,13 +58,18 @@ post_remove() {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
   printf -- "==> %s...\n" "Removing user and group: gdm"
-  if getent passwd gdm &> /dev/null && ! userdel gdm; then
+  local i=""
+  if getent passwd gdm &> /dev/null; then
+    userdel gdm || i="sudo userdel gdm"
+  fi
+  if getent group gdm &> /dev/null; then
+    groupdel gdm || i+="${i:+" && "}sudo groupdel gdm"
+  fi
+  if [ -n "$i" ]; then
     printf -- ">\n> %s\n> %s\n>   %s\n>\n" \
-      "Can't remove user which is currently used by" \
+      "Can't remove user/group currently used by" \
       "gdm process... Stop gdm and retry manually:" \
-      "# sudo userdel gdm && sudo groupdel gdm"
-  else
-    getent group  gdm &> /dev/null && groupdel gdm &> /dev/null
+      "# $i"
   fi
 
   printf -- "==> %s...\n" "Refreshing systemd cache"
