@@ -19,21 +19,9 @@ post_install() {
     systemctl reenable gdm.service 2>&1
   else
     # Arch-way = you decide
-    printf -- ">\n> %s\n" \
-      "If you want use GDM-old as default DM, run this commands:"
-    local i
-    if read i < <(systemctl cat display-manager.service 2> /dev/null); then
-      i="${i##*/}"
-      test -n "$i" || i="[service name]"
-      printf -- "> * %s\n>     %s\n>     %s\n" \
-        "Disable and stop currently used Display Manager:" \
-        "# sudo systemctl disable $i" \
-        "# sudo systemctl stop    $i "
-    fi
-    printf -- "> * %s\n>     %s\n>     %s\n>\n" \
-      "Enable and start GDM-old:" \
-      "# sudo systemctl enable gdm.service" \
-      "# sudo systemctl start  gdm.service"
+    printf -- ">\n> %s\n>   %s\n>\n" \
+      "If you want use GDM-old as default DM, run this command:" \
+      "# sudo systemctl enable -f gdm.service"
   fi
 }
 
