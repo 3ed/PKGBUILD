@@ -1,19 +1,18 @@
 # Maintainer: 3ED <krzysztof1987 at gmail dot com>
 #
-pkgname=perl-sharyanto-file-util
+pkgname=perl-rinci
 _lastauthor=P/PE/PERLANCAR
-_pkgname=SHARYANTO-File-Util
-pkgver=0.58
+_pkgname=Rinci
+pkgver=1.1.70
 pkgrel=1
-pkgdesc='File-related utilities'
+pkgdesc='Language-neutral metadata for your code entities'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-chdir' 'perl-file-slurp-tiny')
-checkdepends=('perl-file-chdir' 'perl-file-slurp-tiny')
+depends=('perl-defhash')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('a6e83e1658bbaaa56462d4f1fb46dae01a5c12790aabb03c2e43f1443ce8c2d97523ec15cea1e31e2a90be58917e7f20815d927f7d4bc8147af505e4ada585e2')
+sha512sums=('66081cfae2ca2e9f19c9fa3ae10c385f2fbbc3cf8f63dcfc9b20b192600924c43eb0a7bd64a5d11d58f3e3cee8281808b890ea9c27e8be660d738e45fcb61008')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
