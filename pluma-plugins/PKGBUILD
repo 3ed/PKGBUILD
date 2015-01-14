@@ -1,0 +1,31 @@
+# Mantainer: 3ED <krzysztof1987 at gmail>
+# Contributor: adlerweb <get on aur>
+
+pkgname=pluma-plugins
+pkgver=1.8.1
+pkgrel=1
+arch=('i686' 'x86_64')
+url="https://github.com/rezso/pluma-plugins"
+license=('GPL')
+depends=('pluma' 'mate-common')
+
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/rezso/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('a1e663469a0e2d09685829990e7366edd860995fde4ff3d4e0c3b9a67b69360f')
+
+build() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  PYTHON=/usr/bin/python2 ./autogen.sh \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/${pkgname} \
+    --with-plugins=all \
+    --with-gtk=2.0 \
+    --enable-gtk-doc \
+    --enable-python 
+  make
+}
+
+package() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir" install
+}
