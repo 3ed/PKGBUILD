@@ -6,9 +6,9 @@ pkgname=nvidia-96xx
 _kname=ARCH
 
 pkgver=96.43.23
-pkgrel=18
+pkgrel=19
 _kver_ge="3.0"
-_kver_lt="3.18"
+_kver_lt="3.19"
 
 if [ -z "$_ppfix" ] && [[ $pkgname =~ ^nvidia-96xx(.*)$ ]]; then
   _ppfix="${BASH_REMATCH[1]}"
